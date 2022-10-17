@@ -20,7 +20,7 @@
             <div class="h6"> ${task.title} </div>
             <div class="">
                 <div class="text-secondary">#${task.id} created in ${task.date}</div>
-                <div class="fs-6" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+                <div class="fs-6" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">${task.description}</div>
             </div>
             <div class="mt-2">
                 <span class="bg-gradient-blue-purple rounded-2 p-1 text-white">High</span>
@@ -29,7 +29,7 @@
         </div>
         </button>`
     
-    document.getElementById("teee").click()   //c'est pour fermer l'alert de formulaire
+    document.getElementById("closeAlert").click()   //c'est pour fermer l'alert de formulaire
 }
 
 
