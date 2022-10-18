@@ -341,18 +341,18 @@
 					<label for="priority" class="col-form-label">priority</label>
 					<select class="form-select" aria-label="priority" id="selectPriority">
 						<option selected>please select</option>
-						<option value="p1">One priority</option>
-						<option value="p2">Two priority</option>
-						<option value="p3">Three priority</option>
+						<option value="Task">Task</option>
+						<option value="Story">Story</option>
+						<option value="Bug">Bug</option>
 					</select>
 				</div>
 				<div class="mt-2">
 					<label for="status" class="col-form-label">status</label>
 					<select class="form-select" aria-label="status" id="selectStatus">
 						<option selected>please select</option>
-						<option value="s1">One status</option>
-						<option value="s2">Two status</option>
-						<option value="s3">Three status</option>
+						<option value="To Do">To Do</option>
+						<option value="In Progress">In Progress</option>
+						<option value="Done">Done</option>
 					</select>
 				</div>
 				<div class="mb-3">
@@ -367,7 +367,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" id="cuncel" data-bs-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-primary" onclick='getFunction()'>Save</button>
+				<button type="button" class="btn btn-primary" onclick='createTask()'>Save</button>
 			</div>
 			</div>
 		</div>
@@ -375,7 +375,9 @@
 	<!-- ================== BEGIN core-js ================== -->
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js"></script>
-	<script src="./assets/js/script.js"></script>
+	<script src="assets/js/script.js"></script>
+	<script src="assets/js/app.js"></script>
+	<script src="assets/js/data.js"></script>
 	<!-- ================== END core-js ================== -->
 </body>
 </html>
