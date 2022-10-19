@@ -49,13 +49,16 @@ function createTask() {
                 </div>
             </div>
             <div class="mt-2">
-                <span class="bg-gradient-blue-purple rounded-2 p-1 text-white">High</span>
-                <span class="bg-black-100 rounded-2 p-1 text-white">Feature</span>
+                <button type="button" class="p-1 btn btn-primary">High</button>
+                <button type="button" class="p-1 btn btn-secondary ">Feature</button>
+                <button type="button" class="p-1 btn btn-info">modify</button>
+                <button type="button" class="p-1 btn btn-danger ">delete</button>
             </div>
         </div>
         </button>
         <hr class="border border-gray border-1 opacity-50">`
     } else if (task.status == "In Progress") {
+        document.getElementById("in-progress-tasks-count").innerHTML = ++inProgressCount;
         document.getElementById("in-progress-tasks").innerHTML +=  
         `
         <button class="w-100  d-flex bg-white border border-white">
@@ -71,14 +74,17 @@ function createTask() {
                     ${task.description}</div>
                 </div>
                 <div class="mt-2">
-                    <span class="bg-gradient-blue-purple rounded-2 p-1 text-white">High</span>
-                    <span class="bg-black-100 rounded-2 p-1 text-white">Feature</span>
+                    <button type="button" class="p-1 btn btn-primary">High</button>
+                    <button type="button" class="p-1 btn btn-secondary ">Feature</button>
+                    <button type="button" class="p-1 btn btn-info">modify</button>
+                    <button type="button" class="p-1 btn btn-danger ">delete</button>
                 </div>
             </div>
         </button>
         <hr class="border border-gray border-1 opacity-50">`
         
     }else {
+        document.getElementById("done-tasks-count").innerHTML = ++doneCount;
         document.getElementById("done-tasks").innerHTML +=  
         `
         <button class="w-100  d-flex bg-white border border-white">
@@ -94,8 +100,10 @@ function createTask() {
                     played a role in the problem.">${task.description}</div>
                 </div>
                 <div class="mt-2">
-                    <span class="bg-gradient-blue-purple rounded-2 p-1 text-white">High</span>
-                    <span class="bg-black-100 rounded-2 p-1 text-white">Feature</span>
+                    <button type="button" class="p-1 btn btn-primary">High</button>
+                    <button type="button" class="p-1 btn btn-secondary ">Feature</button>
+                    <button type="button" class="p-1 btn btn-info">modify</button>
+                    <button type="button" class="p-1 btn btn-danger ">delete</button>
                 </div>
             </div>
         </button>
@@ -181,7 +189,7 @@ function reloadTasks() {
                         <div class="fs-6" title="${task.description}">${task.description.substring(0, 80)}...
                         </div>
                     </div>
-                    <div class="mt-3">
+                    <div class="mt-2 ">
                         <button type="button" class="p-1 btn btn-primary">High</button>
                         <button type="button" class="p-1 btn btn-secondary ">Feature</button>
                         <button type="button" class="p-1 btn btn-info">modify</button>
@@ -191,9 +199,10 @@ function reloadTasks() {
             </button>
             <hr class="border border-gray border-1 opacity-50">`
         } else if (task.status == "In Progress") {
+            document.getElementById("in-progress-tasks-count").innerHTML = ++inProgressCount;
             document.getElementById("in-progress-tasks").innerHTML +=  
             `
-            <button class="w-100  d-flex bg-white border border-white">
+            <button class="w-100  d-flex  bg-white border border-white">
                 <div class="col-1  text-start text-success">
                     <i class="bi bi-arrow-clockwise"></i>
                 </div>
@@ -206,14 +215,17 @@ function reloadTasks() {
                         ${task.description.substring(0, 80)}...</div>
                     </div>
                     <div class="mt-2">
-                        <span class="bg-gradient-blue-purple rounded-2 p-1 text-white">High</span>
-                        <span class="bg-black-100 rounded-2 p-1 text-white">Feature</span>
+                        <button type="button" class="p-1 btn btn-primary">High</button>
+                        <button type="button" class="p-1 btn btn-secondary ">Feature</button>
+                        <button type="button" class="p-1 btn btn-info">modify</button>
+                        <button type="button" class="p-1 btn btn-danger ">delete</button>
                     </div>
                 </div>
             </button>
             <hr class="border border-gray border-1 opacity-50">`
             
         }else {
+            document.getElementById("done-tasks-count").innerHTML = ++doneCount;
             document.getElementById("done-tasks").innerHTML +=  
             `
             <button class="w-100  d-flex bg-white border border-white">
@@ -229,8 +241,10 @@ function reloadTasks() {
                         played a role in the problem.">${task.description.substring(0, 80)}...</div>
                     </div>
                     <div class="mt-2">
-                        <span class="bg-gradient-blue-purple rounded-2 p-1 text-white">High</span>
-                        <span class="bg-black-100 rounded-2 p-1 text-white">Feature</span>
+                        <button type="button" class="p-1 btn btn-primary">High</button>
+                        <button type="button" class="p-1 btn btn-secondary ">Feature</button>
+                        <button type="button" class="p-1 btn btn-info">modify</button>
+                        <button type="button" class="p-1 btn btn-danger ">delete</button>
                     </div>
                 </div>
             </button>
