@@ -10,12 +10,12 @@
 function createTask() {
     // initialiser task form
     let task= {
-        id : id ++,
-        title : document.getElementById("Title").value,
-        type : document.querySelector('input[type="radio"]:checked').value,
-        priority : document.getElementById("selectPriority").value,
-        status : document.getElementById("selectStatus").value,
-        date : document.getElementById("date").value,
+        id          : id ++,
+        title       : document.getElementById("Title").value,
+        type        : document.querySelector('input[type="radio"]:checked').value,
+        priority    : document.getElementById("selectPriority").value,
+        status      : document.getElementById("selectStatus").value,
+        date        : document.getElementById("date").value,
         description : document.getElementById("description").value
     };
     
@@ -48,11 +48,11 @@ function createTask() {
                     just update this primary description accordingly.">${task.description}
                 </div>
             </div>
-            <div class="mt-2">
-                <button type="button" class="p-1 btn btn-primary">High</button>
-                <button type="button" class="p-1 btn btn-secondary ">Feature</button>
-                <button type="button" class="p-1 btn btn-info">modify</button>
-                <button type="button" class="p-1 btn btn-danger ">delete</button>
+            <div class="mt-2 ">
+                <span class="p-1 btn btn-primary">High</span>
+                <span class="p-1 btn btn-secondary">Feature</span>
+                <span class="p-1 btn btn-info">modify</span>
+                <span class="p-1 btn btn-danger onclick='deleteTask()'">delete</span>
             </div>
         </div>
         </button>
@@ -74,10 +74,10 @@ function createTask() {
                     ${task.description}</div>
                 </div>
                 <div class="mt-2">
-                    <button type="button" class="p-1 btn btn-primary">High</button>
-                    <button type="button" class="p-1 btn btn-secondary ">Feature</button>
-                    <button type="button" class="p-1 btn btn-info">modify</button>
-                    <button type="button" class="p-1 btn btn-danger ">delete</button>
+                    <span class="p-1 btn btn-primary">High</span>
+                    <span class="p-1 btn btn-secondary">Feature</span>
+                    <span class="p-1 btn btn-info">modify</span>
+                    <span class="p-1 btn btn-danger onclick='deleteTask()'">delete</span>
                 </div>
             </div>
         </button>
@@ -100,19 +100,28 @@ function createTask() {
                     played a role in the problem.">${task.description}</div>
                 </div>
                 <div class="mt-2">
-                    <button type="button" class="p-1 btn btn-primary">High</button>
-                    <button type="button" class="p-1 btn btn-secondary ">Feature</button>
-                    <button type="button" class="p-1 btn btn-info">modify</button>
-                    <button type="button" class="p-1 btn btn-danger ">delete</button>
+                    <span class="p-1 btn btn-primary">High</span>
+                    <span class="p-1 btn btn-secondary">Feature</span>
+                    <span class="p-1 btn btn-info">modify</span>
+                    <span class="p-1 btn btn-danger onclick='deleteTask()'">delete</span> 
                 </div>
+                <button class="btn btn-info">Supreme</button>
             </div>
         </button>
         <hr class="border border-gray border-1 opacity-50">`
     }
+  
     document.getElementById("closeAlert").click()   //c'est pour fermer l'alert de formulaire
-       
+    swal({
+        title: "Good !",
+        text: "You added succesfly!",
+        icon: "success",
+        button: "OK!",
+      }); 
+      console.log(tasks);
     
-}       
+}  
+     
 
 function saveTask() {
     // Recuperer task attributes a partir les champs input
@@ -154,8 +163,26 @@ function updateTask() {
 
 function deleteTask() {
     // Get index of task in the array
-
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        }
+    })
     // Remove task from array by index splice function
+    
+    let supp =  tasks.splice (id - 18, 1)
 
     // close modal form
 
@@ -189,11 +216,11 @@ function reloadTasks() {
                         <div class="fs-6" title="${task.description}">${task.description.substring(0, 80)}...
                         </div>
                     </div>
-                    <div class="mt-2 ">
-                        <button type="button" class="p-1 btn btn-primary">High</button>
-                        <button type="button" class="p-1 btn btn-secondary ">Feature</button>
-                        <button type="button" class="p-1 btn btn-info">modify</button>
-                        <button type="button" class="p-1 btn btn-danger ">delete</button>
+                    <div class="mt-2">
+                        <span class="p-1 btn btn-primary">High</span>
+                        <span class="p-1 btn btn-secondary">Feature</span>
+                        <span class="p-1 btn btn-info">modify</span>
+                        <span class="p-1 btn btn-danger onclick='deleteTask()'">delete</span>
                     </div>
                 </div>
             </button>
@@ -215,10 +242,10 @@ function reloadTasks() {
                         ${task.description.substring(0, 80)}...</div>
                     </div>
                     <div class="mt-2">
-                        <button type="button" class="p-1 btn btn-primary">High</button>
-                        <button type="button" class="p-1 btn btn-secondary ">Feature</button>
-                        <button type="button" class="p-1 btn btn-info">modify</button>
-                        <button type="button" class="p-1 btn btn-danger ">delete</button>
+                        <span class="p-1 btn btn-primary">High</span>
+                        <span class="p-1 btn btn-secondary">Feature</span>
+                        <span class="p-1 btn btn-info">modify</span>
+                        <span class="p-1 btn btn-danger onclick='deleteTask()'">delete</span>
                     </div>
                 </div>
             </button>
@@ -241,10 +268,10 @@ function reloadTasks() {
                         played a role in the problem.">${task.description.substring(0, 80)}...</div>
                     </div>
                     <div class="mt-2">
-                        <button type="button" class="p-1 btn btn-primary">High</button>
-                        <button type="button" class="p-1 btn btn-secondary ">Feature</button>
-                        <button type="button" class="p-1 btn btn-info">modify</button>
-                        <button type="button" class="p-1 btn btn-danger ">delete</button>
+                        <span class="p-1 btn btn-primary">High</span>
+                        <span class="p-1 btn btn-secondary">Feature</span>
+                        <span class="p-1 btn btn-info">modify</span>
+                        <span class="p-1 btn btn-danger onclick='deleteTask()'">delete</span>
                     </div>
                 </div>
             </button>
