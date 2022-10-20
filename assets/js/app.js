@@ -52,7 +52,7 @@ function createTask() {
                 <span class="p-1 btn btn-primary">High</span>
                 <span class="p-1 btn btn-secondary">Feature</span>
                 <span class="p-1 btn btn-info">modify</span>
-                <span class="p-1 btn btn-danger onclick='deleteTask()'">delete</span>
+                <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span>
             </div>
         </div>
         </button>
@@ -77,7 +77,7 @@ function createTask() {
                     <span class="p-1 btn btn-primary">High</span>
                     <span class="p-1 btn btn-secondary">Feature</span>
                     <span class="p-1 btn btn-info">modify</span>
-                    <span class="p-1 btn btn-danger onclick='deleteTask()'">delete</span>
+                    <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span>
                 </div>
             </div>
         </button>
@@ -103,7 +103,7 @@ function createTask() {
                     <span class="p-1 btn btn-primary">High</span>
                     <span class="p-1 btn btn-secondary">Feature</span>
                     <span class="p-1 btn btn-info">modify</span>
-                    <span class="p-1 btn btn-danger onclick='deleteTask()'">delete</span> 
+                    <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span> 
                 </div>
                 <button class="btn btn-info">Supreme</button>
             </div>
@@ -161,28 +161,33 @@ function updateTask() {
     
 }
 
-function deleteTask() {
+function deleteTask(id) {
     // Get index of task in the array
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
+    let index;
+    for(let i = 0; i < tasks.length; i++){
+        if ( tasks[i].id == id ) { index = i}
+    }
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this imaginary file!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+           tasks.splice (index, 1);  //for delete a   u.s
+           reloadTasks()  // afficher tout les u.s
+          swal("Your user story has been deleted!", {
+            icon: "success",
+          });
+        } else {
+          swal("Your user story file is safe!");
         }
-    })
+      });
+      
+
     // Remove task from array by index splice function
-    
-    let supp =  tasks.splice (id - 18, 1)
 
     // close modal form
 
@@ -196,12 +201,19 @@ function initTaskForm() {
 }
 
 function reloadTasks() {
-    
+
     // Remove tasks elements
-    
+    document.getElementById("to-do-tasks").innerHTML= " ";  
+    document.getElementById("in-progress-tasks").innerHTML = " "; 
+    document.getElementById("done-tasks").innerHTML =  " ";
+        
+    toDoCount = 0;
+    inProgressCount = 0;
+    doneCount = 0;
     // Set Task count
     for( let task of tasks){
         if (task.status == "To Do") {
+
             document.getElementById("to-do-tasks-count").innerHTML = ++toDoCount;
             document.getElementById("to-do-tasks").innerHTML +=  //si on met = le contenu de todo va changer et remplacer par le neaveau ifo
             `
@@ -220,7 +232,7 @@ function reloadTasks() {
                         <span class="p-1 btn btn-primary">High</span>
                         <span class="p-1 btn btn-secondary">Feature</span>
                         <span class="p-1 btn btn-info">modify</span>
-                        <span class="p-1 btn btn-danger onclick='deleteTask()'">delete</span>
+                        <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span>
                     </div>
                 </div>
             </button>
@@ -245,7 +257,7 @@ function reloadTasks() {
                         <span class="p-1 btn btn-primary">High</span>
                         <span class="p-1 btn btn-secondary">Feature</span>
                         <span class="p-1 btn btn-info">modify</span>
-                        <span class="p-1 btn btn-danger onclick='deleteTask()'">delete</span>
+                        <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span>
                     </div>
                 </div>
             </button>
@@ -271,7 +283,7 @@ function reloadTasks() {
                         <span class="p-1 btn btn-primary">High</span>
                         <span class="p-1 btn btn-secondary">Feature</span>
                         <span class="p-1 btn btn-info">modify</span>
-                        <span class="p-1 btn btn-danger onclick='deleteTask()'">delete</span>
+                        <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span>
                     </div>
                 </div>
             </button>
