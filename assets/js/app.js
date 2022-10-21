@@ -39,19 +39,12 @@ function createTask() {
             <div class="h6"> ${task.title} </div>
             <div class="">
                 <div class="text-secondary">#${task.id} created in ${task.date}</div>
-                <div class="fs-6" title="There is hardly anything more frustrating than having
-                    to look for current requirements in tens of comments under the actual description
-                    or having to decide which commenter is actually authorized to change the requirements.
-                    The goal here is to keep all the up-to-date requirements and details in 
-                    the main/primary description of a task. Even though the information in comments
-                    may affect initial criteria, 
-                    just update this primary description accordingly.">${task.description}
-                </div>
+                <div class="" title="${task.description}"> ${task.description.substring(0, 80)}...</div>
             </div>
             <div class="mt-2 ">
-                <span class="p-1 btn btn-primary">High</span>
-                <span class="p-1 btn btn-secondary">Feature</span>
-                <span class="p-1 btn btn-info">modify</span>
+                <span class="p-1 btn btn-primary">${task.priority}</span>
+                <span class="p-1 btn btn-secondary" >${task.type}</span>
+                <span class="p-1 btn btn-info" onclick="editTask(${task.id})">Edit</span>   
                 <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span>
             </div>
         </div>
@@ -69,14 +62,12 @@ function createTask() {
                 <div class="h6">${task.title}</div>
                 <div class="">
                     <div class="">#${task.id} created in ${task.date}</div>
-                    <div class="" title="to the affected account and services if possible. 
-                    It might be hard to reproduce the exact environment on a local machine.">
-                    ${task.description}</div>
+                    <div class="" title="${task.description}"> ${task.description.substring(0, 80)}...</div>
                 </div>
                 <div class="mt-2">
-                    <span class="p-1 btn btn-primary">High</span>
-                    <span class="p-1 btn btn-secondary">Feature</span>
-                    <span class="p-1 btn btn-info">modify</span>
+                    <span class="p-1 btn btn-primary">${task.priority}</span>
+                    <span class="p-1 btn btn-secondary" >${task.type}</span>  
+                    <span class="p-1 btn btn-info" onclick="editTask(${task.id})">Edit</span>
                     <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span>
                 </div>
             </div>
@@ -95,17 +86,14 @@ function createTask() {
                 <div class="h6">${task.title}</div>
                 <div class="">
                     <div class="">#${task.id} created in ${task.date}</div>
-                    <div class="" title="If it is possible and when it does not violate security policies, 
-                    it is usually helpful for the developer to access the original data that might have 
-                    played a role in the problem.">${task.description}</div>
+                    <div class="" title="${task.description}"> ${task.description.substring(0, 80)}...</div>
                 </div>
                 <div class="mt-2">
-                    <span class="p-1 btn btn-primary">High</span>
-                    <span class="p-1 btn btn-secondary">Feature</span>
-                    <span class="p-1 btn btn-info">modify</span>
+                    <span class="p-1 btn btn-primary">${task.priority}</span>
+                    <span class="p-1 btn btn-secondary" >${task.type}</span>
+                    <span class="p-1 btn btn-info" onclick="editTask(${task.id})">Edit</span>
                     <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span> 
                 </div>
-                <button class="btn btn-info">Supreme</button>
             </div>
         </button>
         <hr class="border border-gray border-1 opacity-50">`
@@ -133,32 +121,41 @@ function saveTask() {
     // refresh tasks
 }
 
-function editTask(index) {
-
+function editTask(id) {
     // Initialisez task form
 
-    // Affichez updates
+    let index;
+    for(let i = 0; i  < tasks.length; i++){
+        if ( tasks[i].id == id ) { index = i}
+    }
 
-    // Delete Button
+    //remplir le formilair automatique
+    
+    document.getElementById("Title").value = tasks[index].title
+    if(tasks[index].type === "Bug" ) document.getElementById("flexRadioDefault2").checked = true
+    else  document.getElementById("flexRadioDefault1").checked = true
+    document.getElementById("selectPriority").value = tasks[index].priority
+    document.getElementById("selectStatus").value = tasks[index].status
+    document.getElementById("date").value = tasks[index].date
+    document.getElementById("description").value = tasks[index].description
 
-    // Définir l’index en entrée cachée pour l’utiliser en Update et Delete
+    $('#modal-task').modal('show');  //afficher le popup
 
-    // Definir FORM INPUTS
+   document.querySelector("#save").setAttribute("onclick", `updateTask(${index})`);
+ 
 
-    // Ouvrir Modal form
 }
 
-function updateTask() {
-    // GET TASK ATTRIBUTES FROM INPUTS
-
-    // Créez task object
-
-    // Remplacer ancienne task par nouvelle task
-
-    // Fermer Modal form
-
-    // Refresh tasks
-    
+function updateTask(index) {
+        tasks[index].title       = document.getElementById("Title").value,
+        tasks[index].type        = document.querySelector('input[type="radio"]:checked').value,
+        tasks[index].priority    = document.getElementById("selectPriority").value,
+        tasks[index].status      = document.getElementById("selectStatus").value,
+        tasks[index].date        = document.getElementById("date").value,
+        tasks[index].description = document.getElementById("description").value
+  
+        reloadTasks();
+        $('#modal-task').modal('hide');
 }
 
 function deleteTask(id) {
@@ -194,10 +191,16 @@ function deleteTask(id) {
     // refresh tasks
 }
 
-function initTaskForm() {
+function resetForm() {
     // Clear task form from data
-
+        
+   document.querySelector("#save").setAttribute("onclick", `createTask()`);
     // Hide all action buttons
+    document.getElementById("Title").value = ""
+    document.getElementById("selectPriority").value = ""
+    document.getElementById("selectStatus").value = ""
+    document.getElementById("date").value = ""
+    document.getElementById("description").value = ""
 }
 
 function reloadTasks() {
@@ -229,9 +232,9 @@ function reloadTasks() {
                         </div>
                     </div>
                     <div class="mt-2">
-                        <span class="p-1 btn btn-primary">High</span>
-                        <span class="p-1 btn btn-secondary">Feature</span>
-                        <span class="p-1 btn btn-info">modify</span>
+                        <span class="p-1 btn btn-primary">${task.priority}</span>
+                        <span class="p-1 btn btn-secondary" >${task.type}</span>
+                        <span class="p-1 btn btn-info" onclick="editTask(${task.id})">Edit</span>
                         <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span>
                     </div>
                 </div>
@@ -249,14 +252,13 @@ function reloadTasks() {
                     <div class="h6">${task.title}</div>
                     <div class="">
                         <div class="">#${task.id} created in ${task.date}</div>
-                        <div class="" title="to the affected account and services if possible. 
-                        It might be hard to reproduce the exact environment on a local machine.">
+                        <div class="" title="${task.description}">
                         ${task.description.substring(0, 80)}...</div>
                     </div>
                     <div class="mt-2">
-                        <span class="p-1 btn btn-primary">High</span>
-                        <span class="p-1 btn btn-secondary">Feature</span>
-                        <span class="p-1 btn btn-info">modify</span>
+                        <span class="p-1 btn btn-primary">${task.priority}</span>
+                        <span class="p-1 btn btn-secondary" >${task.type}</span>
+                        <span class="p-1 btn btn-info" onclick="editTask(${task.id})">Edit</span>
                         <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span>
                     </div>
                 </div>
@@ -275,14 +277,12 @@ function reloadTasks() {
                     <div class="h6">${task.title}</div>
                     <div class="">
                         <div class="">#${task.id} created in ${task.date}</div>
-                        <div class="" title="If it is possible and when it does not violate security policies, 
-                        it is usually helpful for the developer to access the original data that might have 
-                        played a role in the problem.">${task.description.substring(0, 80)}...</div>
+                        <div class="" title="${task.description}">${task.description.substring(0, 80)}...</div>
                     </div>
                     <div class="mt-2">
-                        <span class="p-1 btn btn-primary">High</span>
-                        <span class="p-1 btn btn-secondary">Feature</span>
-                        <span class="p-1 btn btn-info">modify</span>
+                        <span class="p-1 btn btn-primary">${task.priority}</span>
+                        <span class="p-1 btn btn-secondary" >${task.type}</span>
+                        <span class="p-1 btn btn-info" onclick="editTask(${task.id})">Edit</span>
                         <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span>
                     </div>
                 </div>

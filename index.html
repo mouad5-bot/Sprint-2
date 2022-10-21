@@ -37,7 +37,7 @@
 				</div>
 				
 				<div class="bt">
-						<button  data-bs-toggle="modal" data-bs-target="#modal-task"  class="btn btn-success"><i class="bi bi-plus"></i> Add Task</a> 
+						<button  data-bs-toggle="modal" data-bs-target="#modal-task"  class="btn btn-success" onclick="resetForm()"><i class="bi bi-plus"></i> Add Task</button> 
 				</div>
 			</div>
 			
@@ -335,7 +335,7 @@
 						</label>
 					</div>
 					<div class="form-check ms-3">
-						<input class="form-check-input" type="radio" name="flexRadioDefault" value="bug"  id="flexRadioDefault2" checked>
+						<input class="form-check-input" type="radio" name="flexRadioDefault" value="Bug"  id="flexRadioDefault2" checked>
 						<label class="form-check-label" for="flexRadioDefault2">
 							Bug
 						</label>
@@ -343,17 +343,15 @@
 				</div>	
 				<div class="mt-2">
 					<label for="priority" class="col-form-label">priority</label>
-					<select class="form-select" aria-label="priority" id="selectPriority">
-						<option selected>please select</option>
-						<option value="Task">Task</option>
-						<option value="Story">Story</option>
-						<option value="Bug">Bug</option>
+					<select class="form-select" aria-label="priority" id="selectPriority" >
+						<option value="High">High</option>
+						<option value="Medium">Medium</option>
+						<option value="Low">Low</option>
 					</select>
 				</div>
 				<div class="mt-2">
 					<label for="status" class="col-form-label">status</label>
 					<select class="form-select" aria-label="status" id="selectStatus">
-						<option selected>please select</option>
 						<option value="To Do">To Do</option>
 						<option value="In Progress">In Progress</option>
 						<option value="Done">Done</option>
@@ -371,16 +369,15 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" id="cuncel" data-bs-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-primary" onclick='createTask()'>Save</button>
+				<button type="button" class="btn btn-primary" onclick='createTask()'  id="save">Save</button>
 			</div>
 			</div>
 		</div>
 	</div>
 	<!-- ================== BEGIN core-js ================== -->
-		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="assets/js/vendor.min.js"></script>
 	<script src="assets/js/app.min.js"></script>
-	<script src="assets/js/script.js"></script>
 	<script src="assets/js/data.js"></script>
 	<script src="assets/js/app.js"></script>
 	<!-- ================== END core-js ================== -->
