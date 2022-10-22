@@ -2,11 +2,16 @@
  * In this file app.js you will find all CRUD functions name.
  * 
  */
+
+//=========   this is all the global variables  ===========
  var id = 18;
  let toDoCount = 0;
  let inProgressCount = 0;
  let doneCount = 0;
- reloadTasks()
+ reloadTasks()   // this function for affiche the content of page
+
+ //==================== add  a user story ========================
+
 function createTask() {
     // initialiser task form
     let task= {
@@ -111,15 +116,7 @@ function createTask() {
 }  
      
 
-function saveTask() {
-    // Recuperer task attributes a partir les champs input
-
-    // Créez task object
-
-    // Ajoutez object au Array
-
-    // refresh tasks
-}
+//==================================== edit a user story ===================================
 
 function editTask(id) {
     // Initialisez task form
@@ -158,6 +155,8 @@ function updateTask(index) {
         $('#modal-task').modal('hide');
 }
 
+//================================== remove a user story ========================================
+
 function deleteTask(id) {
     // Get index of task in the array
     let index;
@@ -184,12 +183,9 @@ function deleteTask(id) {
       });
       
 
-    // Remove task from array by index splice function
-
-    // close modal form
-
-    // refresh tasks
 }
+
+
 
 function resetForm() {
     // Clear task form from data

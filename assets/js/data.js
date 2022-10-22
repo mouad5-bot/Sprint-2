@@ -3,7 +3,7 @@
 */
 var tasks = [
     {
-        'id'            :   1,
+        'id'            :    1,
         'title'         :   'Keep all the updated requirements in one place',
         'type'          :   'Feature',
         'priority'      :   'High',
@@ -12,7 +12,7 @@ var tasks = [
         'description'   :   `There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.`,
     },
     {
-        'id'            :   2,
+        'id'            :    2,
         'title'         :   'Consider creating an acceptance criteria list',
         'type'          :   'Feature',
         'priority'      :   'High',
@@ -25,7 +25,7 @@ var tasks = [
         d) CSV downloaded includes following columns…`,
     },
     {
-        'id'            :   3,
+        'id'            :    3,
         'title'         :   'Provide mockups',
         'type'          :   'Feature',
         'priority'      :   'High',
@@ -34,7 +34,7 @@ var tasks = [
         'description'   :   `A textual requirements description is essential in most cases, but an image is often worth more than a thousand words. Even a simple mockup can limit misunderstandings by a great factor. There are many apps out there that might be helpful here, like Balsamiq, InVision or Mockingbird, but manipulating screenshots of an existing app also works.`,
     },
     {
-        'id'            :   4,
+        'id'            :    4,
         'title'         :   'Provide examples, credentials, etc',
         'type'          :   'Feature',
         'priority'      :   'High',
@@ -43,7 +43,7 @@ var tasks = [
         'description'   :   `If the expectation is to process or generate some file — attach an example of such a file. If the goal is to integrate what is being developed with some service, ensure your devs have access to this service and its documentation. This list could go on and on — the bottom line is — if there is something that our developer might make use of, try to foresee it and provide them with (access to) it.`,
     },
     {
-        'id'            :   5,
+        'id'            :    5,
         'title'         :   'Annotate',
         'type'          :   'Feature',
         'priority'      :   'High',
