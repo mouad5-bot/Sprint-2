@@ -129,8 +129,10 @@ function editTask(id) {
     //remplir le formilair automatique
     
     document.getElementById("Title").value = tasks[index].title
+
     if(tasks[index].type === "Bug" ) document.getElementById("flexRadioDefault2").checked = true
     else  document.getElementById("flexRadioDefault1").checked = true
+
     document.getElementById("selectPriority").value = tasks[index].priority
     document.getElementById("selectStatus").value = tasks[index].status
     document.getElementById("date").value = tasks[index].date
@@ -198,6 +200,8 @@ function resetForm() {
     document.getElementById("date").value = ""
     document.getElementById("description").value = ""
 }
+
+//=================================afficher les user story =============================
 
 function reloadTasks() {
 
