@@ -26,15 +26,13 @@ function createTask() {
     
     document.getElementById("closeAlert").click()   //c'est pour fermer l'alert de formulaire
 
-
-    // Afficher le boutton save
     console.log(task) 
 
     // Ouvrir modal form
    
     if (task.status == "To Do") {
         document.getElementById("to-do-tasks-count").innerHTML = ++toDoCount;
-        document.getElementById("to-do-tasks").innerHTML +=  //si on met = le contenu de todo va changer et remplacer par le neaveau ifo
+        document.getElementById("to-do-tasks").innerHTML +=  //si on met egal = le contenu de todo va changer et remplacer par le neaveau info
         `
         <button class="w-100  d-flex bg-white border border-white">
         <div class=" col-1  text-start text-success">
@@ -46,11 +44,12 @@ function createTask() {
                 <div class="text-secondary">#${task.id} created in ${task.date}</div>
                 <div class="" title="${task.description}"> ${task.description.substring(0, 80)}...</div>
             </div>
-            <div class="mt-2 ">
+            <div class="mt-2">
                 <span class="p-1 btn btn-primary">${task.priority}</span>
                 <span class="p-1 btn btn-secondary" >${task.type}</span>
-                <span class="p-1 btn btn-info" onclick="editTask(${task.id})">Edit</span>   
+                <span class="p-1 btn btn-info" onclick="editTask(${task.id})">Edit</span>
                 <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span>
+            </div>
             </div>
         </div>
         </button>
@@ -71,7 +70,7 @@ function createTask() {
                 </div>
                 <div class="mt-2">
                     <span class="p-1 btn btn-primary">${task.priority}</span>
-                    <span class="p-1 btn btn-secondary" >${task.type}</span>  
+                    <span class="p-1 btn btn-secondary" >${task.type}</span>
                     <span class="p-1 btn btn-info" onclick="editTask(${task.id})">Edit</span>
                     <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span>
                 </div>
@@ -97,7 +96,7 @@ function createTask() {
                     <span class="p-1 btn btn-primary">${task.priority}</span>
                     <span class="p-1 btn btn-secondary" >${task.type}</span>
                     <span class="p-1 btn btn-info" onclick="editTask(${task.id})">Edit</span>
-                    <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span> 
+                    <span class="p-1 btn btn-danger" onclick="deleteTask(${task.id})">delete</span>
                 </div>
             </div>
         </button>
@@ -112,17 +111,18 @@ function createTask() {
         button: "OK!",
       }); 
       console.log(tasks);
+
+      tasks.push(task)
     
 }  
      
-
 //==================================== edit a user story ===================================
 
 function editTask(id) {
     // Initialisez task form
 
     let index;
-    for(let i = 0; i  < tasks.length; i++){
+    for(let i = 0; i < tasks.length; i++){
         if ( tasks[i].id == id ) { index = i}
     }
 
@@ -134,9 +134,9 @@ function editTask(id) {
     else  document.getElementById("flexRadioDefault1").checked = true
 
     document.getElementById("selectPriority").value = tasks[index].priority
-    document.getElementById("selectStatus").value = tasks[index].status
-    document.getElementById("date").value = tasks[index].date
-    document.getElementById("description").value = tasks[index].description
+    document.getElementById("selectStatus").value   = tasks[index].status
+    document.getElementById("date").value           = tasks[index].date
+    document.getElementById("description").value    = tasks[index].description
 
     $('#modal-task').modal('show');  //afficher le popup
 
@@ -182,12 +182,8 @@ function deleteTask(id) {
         } else {
           swal("Your user story file is safe!");
         }
-      });
-      
-
+    });   
 }
-
-
 
 function resetForm() {
     // Clear task form from data
@@ -201,7 +197,7 @@ function resetForm() {
     document.getElementById("description").value = ""
 }
 
-//=================================afficher les user story =============================
+//================================= afficher les user story =============================
 
 function reloadTasks() {
 
