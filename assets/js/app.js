@@ -4,10 +4,10 @@
  */
 
 //=========   this is all the global variables  ===========
- var id = 18;
- let toDoCount = 0;
+ var id              = 18;
+ let toDoCount       = 0;
  let inProgressCount = 0;
- let doneCount = 0;
+ let doneCount       = 0;
  reloadTasks()   // this function for affiche the content of page
 
  //==================== add  a user story ========================
@@ -15,7 +15,7 @@
 function createTask() {
     // initialiser task form
     let task= {
-        id          : id ++,
+        id          : id++,
         title       : document.getElementById("Title").value,
         type        : document.querySelector('input[type="radio"]:checked').value,
         priority    : document.getElementById("selectPriority").value,
@@ -103,7 +103,7 @@ function createTask() {
         <hr class="border border-gray border-1 opacity-50">`
     }
   
-    document.getElementById("closeAlert").click()   //c'est pour fermer l'alert de formulaire
+    document.getElementById("closeAlert").click()   //c'est pour fermer l'alert de formulaire(popup)
     swal({
         title: "Good !",
         text: "You added succesfly!",
@@ -185,16 +185,19 @@ function deleteTask(id) {
     });   
 }
 
+//=============reset the information that stay in the form ===============
+
 function resetForm() {
     // Clear task form from data
         
-   document.querySelector("#save").setAttribute("onclick", `createTask()`);
+    document.querySelector("#save").setAttribute("onclick", `createTask()`);
+
     // Hide all action buttons
-    document.getElementById("Title").value = ""
+    document.getElementById("Title").value          = ""
     document.getElementById("selectPriority").value = ""
-    document.getElementById("selectStatus").value = ""
-    document.getElementById("date").value = ""
-    document.getElementById("description").value = ""
+    document.getElementById("selectStatus").value   = ""
+    document.getElementById("date").value           = ""
+    document.getElementById("description").value    = ""
 }
 
 //================================= afficher les user story =============================
@@ -202,14 +205,15 @@ function resetForm() {
 function reloadTasks() {
 
     // Remove tasks elements
-    document.getElementById("to-do-tasks").innerHTML= " ";  
-    document.getElementById("in-progress-tasks").innerHTML = " "; 
-    document.getElementById("done-tasks").innerHTML =  " ";
+    document.getElementById("to-do-tasks").innerHTML        = " ";  
+    document.getElementById("in-progress-tasks").innerHTML  = " "; 
+    document.getElementById("done-tasks").innerHTML         = " ";
         
-    toDoCount = 0;
+    toDoCount       = 0;
     inProgressCount = 0;
-    doneCount = 0;
-    // Set Task count
+    doneCount       = 0;
+
+
     for( let task of tasks){
         if (task.status == "To Do") {
 
